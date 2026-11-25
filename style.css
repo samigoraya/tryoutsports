@@ -465,3 +465,12 @@ select { padding-right: 32px; }
   .seg-btn { flex: 1 1 calc(50% - 6px); text-align: center; }
 }
 @media (max-width: 420px) { .panel .field.from, .panel:has(.field[hidden]) .field.from { grid-column: 1 / -1; } .seg-btn { flex: 1 1 calc(50% - 6px); } }
+
+/* Browse the ready-made list */
+#browse {
+  background: var(--surface); color: var(--primary);
+  border: 1.5px solid var(--primary); width: 100%;
+  min-height: 36px; padding: 6px 12px; font-size: 0.88rem; font-weight: 600;
+}
+#browse:hover { background: var(--primary-soft); }
+#browse:disabled { opacity: 0.6; cursor: progress; }

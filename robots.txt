@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tryout-sports.com/team-names/sitemap.xml
+Sitemap: https://teamname.tryout-sports.com/sitemap.xml

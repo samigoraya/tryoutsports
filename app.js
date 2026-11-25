@@ -96,7 +96,9 @@ function pool(sport, tone) {
   const own = S.terms.concat(tone === "funny" ? S.funny : []);
   // Collective words (Crew, Union, Dynamo) are how many real clubs name themselves, so every sport can use them.
   const coll = LIB.collectives || [];
-  const all = (sport === "baseball" ? T.mascots : T.generic.concat(own)).concat(coll);
+  // Animals and all-team words work for every sport and every tone: the describing word carries the tone.
+  const extra = coll.concat(LIB.animals || [], LIB.universal || []);
+  const all = (sport === "baseball" ? T.mascots : T.generic.concat(own)).concat(extra);
   return (CACHE[key] = { all: bucketize(all, T.adj), own: own.length ? bucketize(own, T.adj) : null });
 }
 function themePool(label, sport) {
@@ -122,9 +124,9 @@ function pickTail(tone, sport, rest, about) {
 
 
 // ---- Team type: team, sports club, school team or other group. Each type has its own naming patterns.
-const CLUB_W = ["United","Athletic","Rovers","Wanderers","City","Town","Sporting","Albion","Rangers","Dynamo","Harriers","Rovers","County","Academical"];
-const SCHOOL_W = ["High","Academy","Prep","Central","Valley","Junior","Senior","Varsity","Heights","Country Day","Institute"];
-const GROUP_W = ["Crew","Squad","Gang","Posse","Collective","Club","Alliance","Mob","Bunch","Society"];
+const CLUB_W = ["United","Athletic","Rovers","Wanderers","City","Town","Sporting","Albion","Rangers","Dynamo","Harriers","County","Academical","Internazionale","Olympic","Olympique","Real","Atletico","Sportif","Verein","Borough","Park","Rovers","Thistle","Caledonian","Argyle","Orient","Victoria","Alexandra","Wednesday","Forest","Vale","Dale","End","Hearts","Hibernian","Celtic","Corinthians","Nomads","Casuals","Amateurs","Reserves","Juniors","Colts","Swifts","Comets","Strollers","Pilgrims","Mariners","Harbour"];
+const SCHOOL_W = ["High","Academy","Prep","Central","Valley","Junior","Senior","Varsity","Heights","Country Day","Institute","College","Collegiate","Grammar","Preparatory","Technical","Normal","Union","Consolidated","Regional","Community","Catholic","Christian","Day","Boarding","Lower","Upper","Middle","North","South","East","West","Memorial","Charter","Magnet","Classical","Latin","Polytechnic","Seminary","University"];
+const GROUP_W = ["Crew","Squad","Gang","Posse","Collective","Club","Alliance","Mob","Bunch","Society","Circle","Company","Crowd","Gathering","League","Network","Order","Party","Pack","Team","Troop","Tribe","Union","Unit","Chapter","Committee","Council","Group","Guild","Krewe","Outfit","Roster","Set","Syndicate"];
 const typeLabel = { club: "Sports club", school: "School / College team", other: "Other group" };
 function sportWord(sport) {
   const l = LIB.sports[sport].label;
@@ -233,7 +235,8 @@ function readOptions() {
   return { type, tone, sport, words: w === "any" ? null : Number(w), place: titleCase(placeEl.value), about: readAbout(aboutEl.value) };
 }
 
-function render(animate, opts) {
+function renderNames(names, animate) {
+  current = names;
   list.textContent = "";
   current.forEach((name, i) => {
     const li = document.createElement("li");
@@ -257,6 +260,10 @@ function render(animate, opts) {
     li.append(b);
     list.append(li);
   });
+}
+
+function render(animate, opts) {
+  renderNames(current, animate);
   aboutHelp.textContent = !opts.about.filled ? ABOUT_DEFAULT
     : opts.about.matched.length ? "Using from your description: " + opts.about.matched.join(", ") + "."
     : "No keywords found in that description. Try words like fast, strong, blue, kids, ocean, fire, royal, school or office.";
@@ -291,7 +298,45 @@ function generate(animate = true) {
   }
 }
 
-document.querySelectorAll("select").forEach(r => r.addEventListener("change", () => generate()));
+// ---- Browse the ready-made list: 30,000 names, loaded only when asked for ----
+const PAGE = 60;
+let browseAt = 0, browseOn = false;
+const browseBtn = document.getElementById("browse");
+
+function showBrowsePage() {
+  const all = window.NAME_LIST || [];
+  const slice = all.slice(browseAt, browseAt + PAGE);
+  renderNames(slice, true);
+  titleEl.textContent = `Ready-made names ${browseAt + 1}\u2013${browseAt + slice.length} of ${all.length.toLocaleString()}`;
+  metaEl.textContent = "";
+  for (const c of ["Ready-made list", "Tap any name to copy"]) {
+    const el = document.createElement("span"); el.className = "chip"; el.textContent = c; metaEl.append(el);
+  }
+  browseAt += slice.length;
+  if (browseAt >= all.length) { browseAt = 0; browseBtn.textContent = "Start the list again"; }
+  else browseBtn.textContent = "Show 60 more";
+}
+
+function loadList(then) {
+  if (window.NAME_LIST) { then(); return; }
+  browseBtn.disabled = true;
+  browseBtn.textContent = "Loading the list\u2026";
+  window.onNameList = () => { browseBtn.disabled = false; then(); };
+  const sc = document.createElement("script");
+  sc.src = "namelist.js";
+  sc.onerror = () => {
+    browseBtn.disabled = false; browseBtn.textContent = "Browse 30,000 ready-made names";
+    say("The ready-made list did not load. The generator above still works.", 5000);
+  };
+  document.head.append(sc);
+}
+
+if (browseBtn) browseBtn.addEventListener("click", () => {
+  browseOn = true;
+  loadList(showBrowsePage);
+});
+
+document.querySelectorAll("select").forEach(r => r.addEventListener("change", () => { browseOn = false; browseAt = 0; if (browseBtn) browseBtn.textContent = "Browse 30,000 ready-made names"; generate(); }));
 document.querySelectorAll(".seg-btn").forEach(btn => btn.addEventListener("click", () => {
   document.getElementById("ttype").value = btn.dataset.v;
   document.querySelectorAll(".seg-btn").forEach(x => { const on = x === btn; x.classList.toggle("on", on); x.setAttribute("aria-checked", on ? "true" : "false"); });
