@@ -1,0 +1,16 @@
+name = "teamname-ai"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# Serves the button at https://teamname.tryout-sports.com/api/names when the site
+# is hosted on Cloudflare Pages on that domain. Remove this block if you host the
+# site elsewhere and call the worker by its own workers.dev URL instead.
+[[routes]]
+pattern = "teamname.tryout-sports.com/api/names"
+zone_name = "tryout-sports.com"
+
+# Optional: a KV namespace turns on the per-visitor hourly limit.
+# wrangler kv namespace create NAMES_RATE   then paste the id here.
+# [[kv_namespaces]]
+# binding = "NAMES_RATE"
+# id = "paste-the-id-here"

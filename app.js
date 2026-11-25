@@ -351,11 +351,35 @@ document.getElementById("copyAll").addEventListener("click", async () => {
 // ---- AI names: asks Claude for a batch that follows the same settings.
 // The button stays hidden wherever the viewer cannot ask Claude.
 const aiBtn = document.getElementById("ai");
-let sample = null;
+// Where the AI names come from. Inside Claude the page can ask Claude directly.
+// On the live site a small Cloudflare Worker answers here and holds the API key.
+// Set this to the Worker's full URL if it runs on another origin.
+const AI_ENDPOINT = "/api/names";
+let sample = null, aiEndpointOn = false;
 (async () => {
   try { sample = await window.claude?.use?.("sample"); } catch (e) { sample = null; }
-  if (sample) aiBtn.hidden = false;
+  if (sample) { aiBtn.hidden = false; return; }
+  try {
+    const r = await fetch(AI_ENDPOINT, { method: "GET" });
+    if (r.ok && (await r.json()).ok) { aiEndpointOn = true; aiBtn.hidden = false; }
+  } catch (e) { /* no endpoint deployed: the button stays hidden */ }
 })();
+
+async function askEndpoint(opts) {
+  const r = await fetch(AI_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      sport: opts.sport, sportLabel: sportLabel(opts.sport), tone: opts.tone,
+      words: opts.words, place: opts.place, type: opts.type,
+      about: aboutEl.value.trim().slice(0, 120)
+    })
+  });
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw { code: data.error || (r.status === 429 ? "rate_limited" : "bad_answer") };
+  if (!Array.isArray(data.names) || !data.names.length) throw { code: "bad_answer" };
+  return data.names;
+}
 
 function aiPrompt(opts) {
   const rules = [];
@@ -404,14 +428,19 @@ function parseNames(text) {
 }
 
 aiBtn.addEventListener("click", async () => {
-  if (!sample || aiBtn.disabled) return;
+  if ((!sample && !aiEndpointOn) || aiBtn.disabled) return;
   const opts = readOptions();
   aiBtn.disabled = true;
   clearTimeout(statusTimer);
   statusEl.textContent = "Asking AI for 30 names. This takes a few seconds.";
   try {
-    const res = await sample(aiPrompt(opts), { modelTier: "quick", cache: false });
-    const names = parseNames(res && res.text || "");
+    let names;
+    if (sample) {
+      const res = await sample(aiPrompt(opts), { modelTier: "quick", cache: false });
+      names = parseNames(res && res.text || "");
+    } else {
+      names = await askEndpoint(opts);
+    }
     if (!names.length) throw { code: "bad_answer" };
     current = names;
     source = "ai";
@@ -420,7 +449,7 @@ aiBtn.addEventListener("click", async () => {
     say(names.length < 30 ? `AI returned ${names.length} names this time.` : "AI wrote these 30 names.", 4000);
   } catch (e) {
     const code = e && e.code;
-    if (code === "not_granted") { aiBtn.hidden = true; say("AI names are turned off for this page. The standard button still works.", 6000); }
+    if (code === "not_granted" || code === "not_configured") { aiBtn.hidden = true; say("AI names are turned off for this page. The standard button still works.", 6000); }
     else if (code === "rate_limited") say("AI is busy right now. Wait a minute, then try again.", 6000);
     else say("AI did not return a usable list. Try again, or use Generate 30 names.", 6000);
   } finally {
