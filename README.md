@@ -8,7 +8,7 @@ No build step and no server. Every file in this folder is served as-is.
 - **URLs:** extensionless. The file `motorsports.html` is served at `/motorsports`.
 - **Links are relative**, so the site works at a domain root *and* in a GitHub Pages
   project subpath (`user.github.io/repo/`) without changing anything.
-- **Words:** 15,831 in the lists, plus a 30,000-name ready-made list.
+- **Words:** 15,831 in the word lists behind the generator.
 
 ## Deploy on Cloudflare Pages (easiest — site and AI endpoint on one domain)
 
@@ -61,13 +61,42 @@ than the Worker's own domain means setting `AI_ENDPOINT` in `app.js` to the Work
 | `style.css` | All styling |
 | `app.js` | The name generator |
 | `names.js` | The word library (places, mascots, adjectives, animals, sport words) |
-| `namelist.js` | 30,000 ready-made names, loaded only when the Browse button is clicked |
 | `menu.js` | Header navigation |
 | `uniform.js` | Uniform request form |
 | `sitemap.xml`, `robots.txt` | For search engines |
+| `llms.txt` | A plain-text map of the site for AI answer engines |
+| `404.html` | Served for unknown URLs on all three hosts |
+| `favicon.*`, `icon-*.png`, `apple-touch-icon.png`, `og.png` | Icons and the social sharing image |
+| `site.webmanifest` | Icons and theme colour for installed/home-screen use |
+| `_headers`, `_redirects`, `netlify.toml` | Caching, security headers and the .html redirect |
 | `worker/` | Cloudflare Worker for the Ask AI button (deployed separately, not served) |
 
 ## Changing the domain
 
 Every canonical link, Open Graph URL and sitemap entry is generated from one base URL.
 Rebuild with a different one by setting `BASE_URL` before running `build.py`.
+
+## SEO notes
+
+Everything below is already in the build:
+
+- One unique `<title>` (max 60 chars) and `<meta name="description">` (120-160 chars) per page.
+  Checked at build time; the build fails if any page is outside those limits.
+- Self-referencing canonical on all 1798 pages, all present in `sitemap.xml`, `lastmod` set at build.
+- JSON-LD on every page: `WebApplication` (or `ContactPage`), `BreadcrumbList`, and an `ItemList`
+  of the names the page actually shows. The hub adds `Organization` and `WebSite`.
+- Open Graph and Twitter cards with a 1200x630 image (`og.png`).
+- `robots.txt` names the AI crawlers (GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot,
+  Google-Extended and others) and allows them explicitly, and points at the sitemap.
+- `llms.txt` gives answer engines a short, factual description of what the tool does and
+  the pages worth citing.
+- Scripts are deferred; CSS, JS and images get a one-year cache header, HTML revalidates.
+- Relative internal links, so no 404s whichever host or subpath the site sits on.
+
+Worth doing later, outside this build:
+
+- Submit `sitemap.xml` in Google Search Console and Bing Webmaster Tools.
+- Add a short FAQ section to the sport pages and mark it up with `FAQPage`. Schema without
+  matching visible text breaks Google's rules, so the text has to come first.
+- The sport blurbs and team lists came from general knowledge. Skim them before launch;
+  AI answer engines repeat what they find, so a wrong fact travels.

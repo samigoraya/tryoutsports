@@ -1,0 +1,57 @@
+# TRYOUT Sports Team Name Generator
+
+> A free team name generator covering 198 sports. It builds names in the browser from
+> word lists rather than returning a fixed list, so every click gives 30 new names.
+> Made by TRYOUT Sports, a custom sportswear and team uniform manufacturer.
+
+## What it does
+
+- Generates 30 team names per click for any of 198 sports, grouped into 14 categories.
+- Eight naming styles: classic, fierce, funny, cute, royal, mythical, spooky, space.
+- Four team types: a team, a sports club, a school or college team, or a community group.
+- Options for name length (1, 2 or 3 words), a city or school name, and a free-text description.
+- Free, no sign-up, no account. Nothing is stored and nothing is sent to a server.
+
+## How the names are made
+
+Names are assembled in the browser from word lists: sport-specific words, mascot words,
+animals, describing words, real city names and club words. There is no fixed list of names,
+so the same settings produce different names each time.
+
+## Sport categories
+
+- [Ball & Team Sports](https://teamname.tryout-sports.com/ball-team-sports): 30 sports
+- [Racquet & Paddle Sports](https://teamname.tryout-sports.com/racquet-paddle-sports): 12 sports
+- [Combat Sports & Martial Arts](https://teamname.tryout-sports.com/combat-sports): 22 sports
+- [Athletics: Track & Field](https://teamname.tryout-sports.com/athletics-track-field): 15 sports
+- [Water Sports](https://teamname.tryout-sports.com/water-sports): 22 sports
+- [Winter Sports](https://teamname.tryout-sports.com/winter-sports): 20 sports
+- [Target & Precision Sports](https://teamname.tryout-sports.com/target-precision-sports): 10 sports
+- [Motorsports](https://teamname.tryout-sports.com/motorsports): 15 sports
+- [Equestrian Sports](https://teamname.tryout-sports.com/equestrian-sports): 10 sports
+- [Gymnastics & Acrobatics](https://teamname.tryout-sports.com/gymnastics-acrobatics): 9 sports
+- [Cycling Sports](https://teamname.tryout-sports.com/cycling-sports): 8 sports
+- [Strength Sports](https://teamname.tryout-sports.com/strength-sports): 8 sports
+- [Mind Sports](https://teamname.tryout-sports.com/mind-sports): 8 sports
+- [Extreme & Adventure Sports](https://teamname.tryout-sports.com/extreme-adventure-sports): 9 sports
+
+## Popular pages
+
+- [Soccer team names](https://teamname.tryout-sports.com/soccer-team-names)
+- [Basketball team names](https://teamname.tryout-sports.com/basketball-team-names)
+- [American Football team names](https://teamname.tryout-sports.com/american-football-team-names)
+- [Baseball team names](https://teamname.tryout-sports.com/baseball-team-names)
+- [Cricket team names](https://teamname.tryout-sports.com/cricket-team-names)
+- [Volleyball team names](https://teamname.tryout-sports.com/volleyball-team-names)
+- [Tennis team names](https://teamname.tryout-sports.com/tennis-team-names)
+- [Ice Hockey team names](https://teamname.tryout-sports.com/ice-hockey-team-names)
+- [Boxing team names](https://teamname.tryout-sports.com/boxing-team-names)
+- [Swimming team names](https://teamname.tryout-sports.com/swimming-team-names)
+- [Golf team names](https://teamname.tryout-sports.com/golf-team-names)
+- [Esports team names](https://teamname.tryout-sports.com/esports-team-names)
+
+## Other pages
+
+- [Team name generator home](https://teamname.tryout-sports.com/)
+- [Design your team uniform](https://teamname.tryout-sports.com/design-your-team-uniform): request a custom uniform from TRYOUT Sports.
+- [TRYOUT Sports](https://tryout-sports.com/): the manufacturer behind this tool.

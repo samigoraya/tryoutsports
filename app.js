@@ -298,45 +298,7 @@ function generate(animate = true) {
   }
 }
 
-// ---- Browse the ready-made list: 30,000 names, loaded only when asked for ----
-const PAGE = 60;
-let browseAt = 0, browseOn = false;
-const browseBtn = document.getElementById("browse");
-
-function showBrowsePage() {
-  const all = window.NAME_LIST || [];
-  const slice = all.slice(browseAt, browseAt + PAGE);
-  renderNames(slice, true);
-  titleEl.textContent = `Ready-made names ${browseAt + 1}\u2013${browseAt + slice.length} of ${all.length.toLocaleString()}`;
-  metaEl.textContent = "";
-  for (const c of ["Ready-made list", "Tap any name to copy"]) {
-    const el = document.createElement("span"); el.className = "chip"; el.textContent = c; metaEl.append(el);
-  }
-  browseAt += slice.length;
-  if (browseAt >= all.length) { browseAt = 0; browseBtn.textContent = "Start the list again"; }
-  else browseBtn.textContent = "Show 60 more";
-}
-
-function loadList(then) {
-  if (window.NAME_LIST) { then(); return; }
-  browseBtn.disabled = true;
-  browseBtn.textContent = "Loading the list\u2026";
-  window.onNameList = () => { browseBtn.disabled = false; then(); };
-  const sc = document.createElement("script");
-  sc.src = "namelist.js";
-  sc.onerror = () => {
-    browseBtn.disabled = false; browseBtn.textContent = "Browse 30,000 ready-made names";
-    say("The ready-made list did not load. The generator above still works.", 5000);
-  };
-  document.head.append(sc);
-}
-
-if (browseBtn) browseBtn.addEventListener("click", () => {
-  browseOn = true;
-  loadList(showBrowsePage);
-});
-
-document.querySelectorAll("select").forEach(r => r.addEventListener("change", () => { browseOn = false; browseAt = 0; if (browseBtn) browseBtn.textContent = "Browse 30,000 ready-made names"; generate(); }));
+document.querySelectorAll("select").forEach(r => r.addEventListener("change", () => generate()));
 document.querySelectorAll(".seg-btn").forEach(btn => btn.addEventListener("click", () => {
   document.getElementById("ttype").value = btn.dataset.v;
   document.querySelectorAll(".seg-btn").forEach(x => { const on = x === btn; x.classList.toggle("on", on); x.setAttribute("aria-checked", on ? "true" : "false"); });
