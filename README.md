@@ -20,13 +20,29 @@ No build step and no server. Every file in this folder is served as-is.
 
 Cloudflare Pages serves `/motorsports` from `motorsports.html` with no configuration.
 
-## Deploy on GitHub Pages
+## Deploy on GitHub Pages with the subdomain
 
-1. Push this folder to a repository.
-2. Settings → Pages → Source: *Deploy from a branch*, branch `main`, folder `/ (root)`.
-3. The `CNAME` file already sets the custom domain `teamname.tryout-sports.com`.
-   At your DNS host add a CNAME record: `teamname` → `YOUR-USERNAME.github.io`.
-4. Settings → Pages → tick **Enforce HTTPS** once the certificate is issued.
+1. Push this folder to a repository (public, or private on a paid plan).
+2. **Settings → Pages → Source:** *Deploy from a branch*, branch `main`, folder `/ (root)`.
+3. **Settings → Pages → Custom domain:** enter `teamname.tryout-sports.com` and Save.
+   Do this *before* the DNS record, so nobody else can claim the subdomain in the gap.
+4. **At the DNS host for tryout-sports.com**, add one record:
+
+   | Type | Name | Value | TTL |
+   |---|---|---|---|
+   | CNAME | `teamname` | `YOUR-USERNAME.github.io` | Auto |
+
+   The value is the account, **not** the repository, and **not** the `*.pages.github.io`
+   address shown in Pages settings. No A records: those are only for an apex domain.
+   On Cloudflare DNS, set the record to **DNS only** (grey cloud) until the certificate is
+   issued, or GitHub cannot validate the domain.
+5. Check it with `dig teamname.tryout-sports.com +nostats +nocomments +nocmd`. The answer
+   should be a CNAME to `YOUR-USERNAME.github.io`. DNS can take up to 24 hours.
+6. **Settings → Pages → Enforce HTTPS** once the tick box becomes available.
+
+Saving the custom domain makes GitHub commit a `CNAME` file to the branch. This repo already
+contains one with the right value, and `build.py` rewrites it on every build, so a later push
+will not wipe it. Keep it: deleting that file unsets the custom domain.
 
 `.nojekyll` is included so GitHub serves the files without running Jekyll.
 
