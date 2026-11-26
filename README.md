@@ -4,7 +4,7 @@ A static site: a team name generator with a page for every sport, tone and sport
 No build step and no server. Every file in this folder is served as-is.
 
 - **Pages:** 1798 (hub, 14 sport categories, 198 sports, 8 tones per sport, uniform contact page)
-- **Live at:** https://teamname.tryout-sports.com/
+- **Live at:** https://teamname.tryout-sports.com/ ,  our main webite → at:** https://tryout-sports.com/ 
 - **URLs:** extensionless. The file `motorsports.html` is served at `/motorsports`.
 - **Links are relative**, so the site works at a domain root *and* in a GitHub Pages
   project subpath (`user.github.io/repo/`) without changing anything.
@@ -14,7 +14,7 @@ No build step and no server. Every file in this folder is served as-is.
 
 1. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git.
 2. Pick this repository. No build command. Build output directory: `/`
-3. Custom domains → add `teamname.tryout-sports.com`. our main webite → add `tryout-sports.com`.
+3. Custom domains → add `teamname.tryout-sports.com`. 
 
 4. Deploy `worker/` as described in `worker/README.md`. It attaches to `/api/names` on the
    same domain, and the Ask AI button appears on its own.
