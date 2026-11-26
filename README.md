@@ -14,7 +14,8 @@ No build step and no server. Every file in this folder is served as-is.
 
 1. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git.
 2. Pick this repository. No build command. Build output directory: `/`
-3. Custom domains → add `teamname.tryout-sports.com`.
+3. Custom domains → add `teamname.tryout-sports.com`. our main webite → add `tryout-sports.com`.
+
 4. Deploy `worker/` as described in `worker/README.md`. It attaches to `/api/names` on the
    same domain, and the Ask AI button appears on its own.
 
