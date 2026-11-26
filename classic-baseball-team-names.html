@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://teamname.tryout-sports.com/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Kaushan+Script&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Kaushan+Script&family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Kaushan+Script&family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Classic Baseball Team Name Generator", "url": "https://teamname.tryout-sports.com/classic-baseball-team-names", "description": "Generate 30 classic baseball team names in one click. Old-school mascots like Sluggers, Pilots and Barnstormers, with your hometown. Free and instant.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "TRYOUT Sports", "url": "https://tryout-sports.com/"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tryout-sports.com/"}, {"@type": "ListItem", "position": 2, "name": "Team names", "item": "https://teamname.tryout-sports.com/"}, {"@type": "ListItem", "position": 3, "name": "Ball & Team Sports", "item": "https://teamname.tryout-sports.com/ball-team-sports"}, {"@type": "ListItem", "position": 4, "name": "Baseball team names", "item": "https://teamname.tryout-sports.com/baseball-team-names"}, {"@type": "ListItem", "position": 5, "name": "Classic", "item": "https://teamname.tryout-sports.com/classic-baseball-team-names"}]}</script>
@@ -40,15 +40,16 @@
     <a class="logo" href="./" aria-label="Team name generator home">
       <span class="lg-top">TRYOUT</span><span class="lg-bot">Sports</span>
     </a>
-    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Menu"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="siteNav" aria-label="TRYOUT Sports">
       <div class="nav-item has-menu">
         <a class="nav-link" href="./" aria-current="page">Team Names</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sportsMenu" aria-label="Show sport categories"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-m" type="button" aria-expanded="false" aria-controls="sportsMenu"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.1 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" fill="currentColor"/></svg><span>Team Names</span><svg class="chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="mega" id="sportsMenu">
           <div class="mega-head"><span>Sport categories</span><a href="./">All team names &rarr;</a></div>
           <ul><li><a href="ball-team-sports" aria-current="page"><strong>Ball &amp; Team Sports</strong><span>30 sports</span></a></li><li><a href="racquet-paddle-sports"><strong>Racquet &amp; Paddle Sports</strong><span>12 sports</span></a></li><li><a href="combat-sports"><strong>Combat Sports &amp; Martial Arts</strong><span>22 sports</span></a></li><li><a href="athletics-track-field"><strong>Athletics: Track &amp; Field</strong><span>15 sports</span></a></li><li><a href="water-sports"><strong>Water Sports</strong><span>22 sports</span></a></li><li><a href="winter-sports"><strong>Winter Sports</strong><span>20 sports</span></a></li><li><a href="target-precision-sports"><strong>Target &amp; Precision Sports</strong><span>10 sports</span></a></li><li><a href="motorsports"><strong>Motorsports</strong><span>15 sports</span></a></li><li><a href="equestrian-sports"><strong>Equestrian Sports</strong><span>10 sports</span></a></li><li><a href="gymnastics-acrobatics"><strong>Gymnastics &amp; Acrobatics</strong><span>9 sports</span></a></li><li><a href="cycling-sports"><strong>Cycling Sports</strong><span>8 sports</span></a></li><li><a href="strength-sports"><strong>Strength Sports</strong><span>8 sports</span></a></li><li><a href="mind-sports"><strong>Mind Sports</strong><span>8 sports</span></a></li><li><a href="extreme-adventure-sports"><strong>Extreme &amp; Adventure Sports</strong><span>9 sports</span></a></li></ul>
         </div>
+        <div class="nav-scrim" aria-hidden="true"></div>
       </div>
     </nav>
   </div>
@@ -73,6 +74,8 @@
           <button type="button" class="seg-btn" role="radio" aria-checked="false" data-v="other">Community / Friends</button>
         </div>
       </div>
+
+      <button type="button" class="more-opts" id="more" aria-expanded="false">More options: city, describe your team</button>
 
       <div class="field about">
         <label for="about">Describe your team <small>(optional)</small></label>
@@ -105,9 +108,9 @@
       <div class="field">
         <label for="words">Name length</label>
         <select id="words" name="words">
-          <option value="any" selected>Any length</option>
+          <option value="any">Any length</option>
           <option value="1">1 word</option>
-          <option value="2">2 words</option>
+          <option value="2" selected>2 words</option>
           <option value="3">3 words</option>
         </select>
       </div>
@@ -136,8 +139,9 @@
 
   <div class="content">
     <section class="block"><h2>What makes a good classic baseball team name?</h2><p>Classic names borrow from the early days of the sport: trades, travel and the ballpark itself. They are short, easy to say and look good stitched across a jersey.</p><ul class="tips"><li>Pair a town with a trade or tradition, like Millers, Foresters or Railmen.</li><li>Use ballpark words such as Sluggers, Southpaws, Knuckleballers or Line Drives.</li><li>Keep it to two words so it fits a jersey front and a scoreboard.</li><li>Add your hometown at the end for a clean, traditional look.</li></ul></section>
-    <section class="block"><h2>Popular classic baseball team names</h2><ul class="names-list"><li>Villagers</li><li>Diamond Freeholders</li><li>Vintners</li><li>Twilight Quarrymen</li><li>Fullers</li><li>Spring Fishermen</li><li>Lightkeepers</li><li>Oak Pursers</li><li>Outfitters</li><li>Summer Aviators</li><li>Stevedores</li><li>Timeless Keepers</li><li>Potters</li><li>Orchard Bakers</li><li>Captains</li><li>Switchyard Pursers</li><li>Whalers</li><li>Schooner Boatmen</li><li>Brickmakers</li><li>Heritage Quarrymen</li><li>Helmsmen</li><li>Thresher Netmen</li><li>Glaziers</li><li>Prairie Longshoremen</li></ul></section>
+    <section class="block"><h2>Popular classic baseball team names</h2><ul class="names-list"><li>Villagers</li><li>Winning Captains</li><li>Vintners</li><li>Hardworking Vendors</li><li>Bleacherites</li><li>Milepost Captains</li><li>Greybeards</li><li>Scrappy Brickmakers</li><li>Grocers</li><li>Millstone Vendors</li><li>Electricians</li><li>Heritage Glaziers</li><li>Fullers</li><li>Senior Ropers</li><li>Lightkeepers</li><li>Smoking Pilots</li><li>Outfitters</li><li>Sharp Quarrymen</li><li>Stevedores</li><li>Signal Vendors</li><li>Ironclads</li><li>Industrious Squatters</li><li>Potters</li><li>Lantern Pursers</li></ul></section>
     <section class="block"><h2>Try another style</h2><div class="link-grid"><a class="link-card" href="baseball-team-names"><strong>Baseball team names</strong><span>All eight styles, with ideas and tips.</span></a><a class="link-card" href="fierce-baseball-team-names"><strong>Fierce baseball team names</strong><span>Predators, storms and loud mascots.</span></a><a class="link-card" href="funny-baseball-team-names"><strong>Funny baseball team names</strong><span>Puns, snacks and sandlot jokes.</span></a><a class="link-card" href="cute-baseball-team-names"><strong>Cute baseball team names</strong><span>Friendly names for kids and T-ball.</span></a><a class="link-card" href="royal-baseball-team-names"><strong>Royal baseball team names</strong><span>Kings, knights and castle names.</span></a><a class="link-card" href="mythical-baseball-team-names"><strong>Mythical baseball team names</strong><span>Dragons, titans and legends.</span></a><a class="link-card" href="spooky-baseball-team-names"><strong>Spooky baseball team names</strong><span>Night-game ghosts and monsters.</span></a><a class="link-card" href="space-baseball-team-names"><strong>Space baseball team names</strong><span>Rockets, comets and cosmic names.</span></a></div></section>
+    <section class="block"><h2>Questions people ask</h2><div class="faq"><details><summary>What is a good classic name for a baseball team?</summary><p>Names built on trades, travel or the game itself tend to age well, for example Barnstormers, Pioneers or Double Plays. Fill in your hometown above to see them next to your own city.</p></details><details><summary>How long should a classic baseball team name be?</summary><p>One to three words. Two words fit best on a uniform and read clearly on a scoreboard.</p></details><details><summary>Can I use these classic names for my team?</summary><p>Yes. The names are random combinations, so check that nobody in your league already uses the same one before you order uniforms.</p></details></div></section>
   </div>
 
   <div id="status" class="toast" role="status" aria-live="polite"></div>
@@ -164,9 +168,9 @@
   </div>
 </footer>
 
+<script>window.NAME_SPORT_DATA={"baseball":{"terms":[],"funny":[],"names":["Grand Slam Gang","Seventh Inning Stretch","Curveball Crew","Bases Loaded","Pitch Perfect","The Foul Poles","Bullpen Brigade","Home Run Heroes","Strike Zone","Dugout Dynasty","Double Play Dynasty","The Dingers","Fastball Fury","Walk Off Winners","Diamond Dogs","Sacrifice Flies","Pinch Hitters","Infield Fly Rule","Cleanup Crew","Rally Caps","Slider Squad","Line Drive Legends","Batter Up","Full Count","Pop Fly Posse","Stolen Bases","The Knuckleballers","Mound Visits","Shortstop Stars","Tag Team","Backstop Bandits","On Deck","Extra Innings","Lucky Seven","Sandlot Sluggers","Switch Hitters","Infield Chatter","The Southpaws","Ninth Inning Heroes"]}};</script>
 <script src="names.js" defer></script>
 <script src="menu.js" defer></script>
 <script src="app.js" defer></script>
 </body>
 </html>
-    <section class="block"><h2>Questions people ask</h2><div class="faq"><details><summary>What is a good classic name for a baseball team?</summary><p>Names built on trades, travel or the game itself tend to age well, for example Barnstormers, Pioneers or Double Plays. Fill in your hometown above to see them next to your own city.</p></details><details><summary>How long should a classic baseball team name be?</summary><p>One to three words. Two words fit best on a uniform and read clearly on a scoreboard.</p></details><details><summary>Can I use these classic names for my team?</summary><p>Yes. The names are random combinations, so check that nobody in your league already uses the same one before you order uniforms.</p></details></div></section>

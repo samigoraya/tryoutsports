@@ -1,16 +1,1 @@
-// ---- Header menu: sport categories drop-down and the phone menu button.
-(function () {
-  const site = document.querySelector(".site");
-  if (!site) return;
-  const item = site.querySelector(".nav-item.has-menu");
-  const toggle = item && item.querySelector(".nav-toggle");
-  const burger = site.querySelector(".nav-burger");
-  const setMenu = open => { if (!item) return; item.classList.toggle("open", open); toggle.setAttribute("aria-expanded", String(open)); };
-  if (toggle) toggle.addEventListener("click", e => { e.stopPropagation(); setMenu(!item.classList.contains("open")); });
-  if (burger) burger.addEventListener("click", () => {
-    const open = !site.classList.contains("open");
-    site.classList.toggle("open", open); burger.setAttribute("aria-expanded", String(open));
-  });
-  document.addEventListener("click", e => { if (item && !item.contains(e.target)) setMenu(false); });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") { setMenu(false); if (toggle) toggle.focus(); } });
-})();
+(function(){const c=document.querySelector(".site");if(!c)return;const t=c.querySelector(".nav-item.has-menu");if(!t)return;const a=t.querySelectorAll(".nav-toggle, .nav-m"),i=t.querySelector(".nav-scrim"),o=window.matchMedia("(max-width: 1024px)"),n=e=>{e&&c.style.setProperty("--hh",Math.round(c.getBoundingClientRect().bottom)+"px"),t.classList.toggle("open",e),a.forEach(s=>s.setAttribute("aria-expanded",String(e))),document.documentElement.classList.toggle("nav-lock",e&&o.matches)};a.forEach(e=>e.addEventListener("click",s=>{s.stopPropagation(),n(!t.classList.contains("open"))})),i&&i.addEventListener("click",()=>n(!1)),t.querySelectorAll(".mega a").forEach(e=>e.addEventListener("click",()=>n(!1))),document.addEventListener("click",e=>{t.contains(e.target)||n(!1)}),document.addEventListener("keydown",e=>{if(e.key==="Escape"&&t.classList.contains("open")){n(!1);const s=o.matches?t.querySelector(".nav-m"):t.querySelector(".nav-toggle");s&&s.focus()}}),window.addEventListener("resize",()=>{t.classList.contains("open")&&n(!1)})})();
