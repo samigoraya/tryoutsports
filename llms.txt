@@ -53,5 +53,6 @@ so the same settings produce different names each time.
 ## Other pages
 
 - [Team name generator home](https://teamname.tryout-sports.com/)
+- [How team names are made](https://teamname.tryout-sports.com/how-team-names-are-made): method, filters, limits and how to check a name. Updated 28 Nov 2026.
 - [Design your team uniform](https://teamname.tryout-sports.com/design-your-team-uniform): request a custom uniform from TRYOUT Sports.
 - [TRYOUT Sports](https://tryout-sports.com/): the manufacturer behind this tool.

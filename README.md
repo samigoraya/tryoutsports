@@ -3,8 +3,8 @@
 A static site: a team name generator with a page for every sport, tone and sport category.
 No build step and no server. Every file in this folder is served as-is.
 
-- **Pages:** 1798 (hub, 14 sport categories, 198 sports, 8 tones per sport, uniform contact page)
-- **Live at:** https://teamname.tryout-sports.com/ ,  our main webite → at:** https://tryout-sports.com/ 
+- **Pages:** 1799 (hub, 14 sport categories, 198 sports, 8 tones per sport, uniform contact page, method page)
+- **Live at:** https://teamname.tryout-sports.com/
 - **URLs:** extensionless. The file `motorsports.html` is served at `/motorsports`.
 - **Links are relative**, so the site works at a domain root *and* in a GitHub Pages
   project subpath (`user.github.io/repo/`) without changing anything.
@@ -14,8 +14,7 @@ No build step and no server. Every file in this folder is served as-is.
 
 1. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git.
 2. Pick this repository. No build command. Build output directory: `/`
-3. Custom domains → add `teamname.tryout-sports.com`. 
-
+3. Custom domains → add `teamname.tryout-sports.com`.
 4. Deploy `worker/` as described in `worker/README.md`. It attaches to `/api/names` on the
    same domain, and the Ask AI button appears on its own.
 
@@ -74,7 +73,7 @@ than the Worker's own domain means setting `AI_ENDPOINT` in `app.js` to the Work
 
 | File | What it is |
 |---|---|
-| `*.html` | The 1798 pages |
+| `*.html` | The 1799 pages |
 | `style.css` | All styling |
 | `app.js` | The name generator |
 | `names.js` | The word library (places, mascots, adjectives, animals, sport words) |
@@ -99,7 +98,7 @@ Everything below is already in the build:
 
 - One unique `<title>` (max 60 chars) and `<meta name="description">` (120-160 chars) per page.
   Checked at build time; the build fails if any page is outside those limits.
-- Self-referencing canonical on all 1798 pages, all present in `sitemap.xml`, `lastmod` set at build.
+- Self-referencing canonical on all 1799 pages, all present in `sitemap.xml`, `lastmod` set at build.
 - JSON-LD on every page: `WebApplication` (or `ContactPage`), `BreadcrumbList`, and an `ItemList`
   of the names the page actually shows. The hub adds `Organization` and `WebSite`.
 - Open Graph and Twitter cards with a 1200x630 image (`og.png`).

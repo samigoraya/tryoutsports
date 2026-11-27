@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' ; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Design Your Team Uniform – Custom Kit by TRYOUT Sports</title>
 <meta name="description" content="Get a custom team uniform designed for you. Tell us your sport, colors and quantity and our designers send a free mockup idea. Small and large orders.">
@@ -26,19 +28,18 @@
 <meta name="twitter:title" content="Design Your Team Uniform – Custom Kit by TRYOUT Sports">
 <meta name="twitter:description" content="Get a custom team uniform designed for you. Tell us your sport, colors and quantity and our designers send a free mockup idea. Small and large orders.">
 <meta name="twitter:image" content="https://teamname.tryout-sports.com/og.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Kaushan+Script&family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Kaushan+Script&family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" href="fonts/figtree-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ContactPage", "name": "Design Your Team Uniform", "url": "https://teamname.tryout-sports.com/design-your-team-uniform", "description": "Get a custom team uniform designed for you. Tell us your sport, colors and quantity and our designers send a free mockup idea. Small and large orders.", "publisher": {"@type": "Organization", "name": "TRYOUT Sports", "url": "https://tryout-sports.com/"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tryout-sports.com/"}, {"@type": "ListItem", "position": 2, "name": "Team names", "item": "https://teamname.tryout-sports.com/"}, {"@type": "ListItem", "position": 3, "name": "Design your team uniform", "item": "https://teamname.tryout-sports.com/design-your-team-uniform"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does a custom team uniform cost?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the fabric, the number of pieces and the printing method. Send the form with your sport, quantity and colors and TRYOUT Sports will come back with a quote."}}, {"@type": "Question", "name": "What is the minimum order?", "acceptedAnswer": {"@type": "Answer", "text": "Tell us your team size in the form. Small squads and full clubs are both fine, and the quote will show the price at your quantity."}}, {"@type": "Question", "name": "Do I see the design before it is made?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. TRYOUT Sports sends a mockup of your uniform and only starts production once you approve it."}}, {"@type": "Question", "name": "Can you put the team name from the generator on the uniform?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Copy the name you picked into the form and it goes on the mockup with your colors and numbers."}}]}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to main content</a>
 <header class="site">
   <div class="site-in">
-    <a class="logo" href="./" aria-label="Team name generator home">
-      <span class="lg-top">TRYOUT</span><span class="lg-bot">Sports</span>
+    <a class="logo" href="./" aria-label="TRYOUT Sports team name generator home">
+      <span class="lg-top">TRYOUT</span> <span class="lg-bot">Sports</span>
     </a>
     <nav class="site-nav" id="siteNav" aria-label="TRYOUT Sports">
       <div class="nav-item has-menu">
@@ -54,9 +55,8 @@
     </nav>
   </div>
 </header>
-<div class="page">
+<main class="page" id="main" tabindex="-1">
   <header class="top uhero">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="https://tryout-sports.com/">Home</a><span class="sep" aria-hidden="true">&rsaquo;</span><a href="./">Team names</a><span class="sep" aria-hidden="true">&rsaquo;</span><span aria-current="page">Design your team uniform</span></nav>
     <span class="badge">Custom team uniforms</span>
     <h1>Design Your Team Uniform</h1>
     <p>Tell us about your team. Our designers create a uniform for you, show you a mockup, and make it once you approve.</p>
@@ -96,13 +96,14 @@
       </div></section>
     <section class="block"><h2>Need team names first?</h2><p>Pick a name with the free generator, then bring it here for the uniform.</p><div class="pill-grid"><a class="pill" href="./">Team name generator</a></div></section>
     <section class="block"><h2>Questions people ask</h2><div class="faq"><details><summary>How much does a custom team uniform cost?</summary><p>It depends on the fabric, the number of pieces and the printing method. Send the form with your sport, quantity and colors and TRYOUT Sports will come back with a quote.</p></details><details><summary>What is the minimum order?</summary><p>Tell us your team size in the form. Small squads and full clubs are both fine, and the quote will show the price at your quantity.</p></details><details><summary>Do I see the design before it is made?</summary><p>Yes. TRYOUT Sports sends a mockup of your uniform and only starts production once you approve it.</p></details><details><summary>Can you put the team name from the generator on the uniform?</summary><p>Yes. Copy the name you picked into the form and it goes on the mockup with your colors and numbers.</p></details></div></section>
+    <div class="crumbs-end"><nav class="crumbs" aria-label="Breadcrumb"><a href="https://tryout-sports.com/">Home</a><span class="sep" aria-hidden="true">&rsaquo;</span><a href="./">Team names</a><span class="sep" aria-hidden="true">&rsaquo;</span><span aria-current="page">Design your team uniform</span></nav></div>
   </div>
-</div>
+</main>
 <footer class="site-foot">
   <div class="site-foot-in">
     <div class="foot-top">
       <div class="foot-brand">
-        <a class="logo" href="./" aria-label="Team name generator home"><span class="lg-top">TRYOUT</span><span class="lg-bot">Sports</span></a>
+        <a class="logo" href="./" aria-label="TRYOUT Sports team name generator home"><span class="lg-top">TRYOUT</span> <span class="lg-bot">Sports</span></a>
         <p>Found your name? TRYOUT Sports makes <a href="https://tryout-sports.com/team-uniforms/" target="_blank" rel="noopener">custom team uniforms</a> for clubs, schools and leagues, in small and large orders.</p>
         <a class="foot-cta" href="design-your-team-uniform">Design your team uniform</a>
       </div>
@@ -116,7 +117,7 @@
       <h2>Team names by sport</h2>
       <nav class="foot-links" aria-label="Sport categories"><a href="./">All team names</a><a href="ball-team-sports">Ball &amp; Team Sports</a><a href="racquet-paddle-sports">Racquet &amp; Paddle Sports</a><a href="combat-sports">Combat Sports &amp; Martial Arts</a><a href="athletics-track-field">Athletics: Track &amp; Field</a><a href="water-sports">Water Sports</a><a href="winter-sports">Winter Sports</a><a href="target-precision-sports">Target &amp; Precision Sports</a><a href="motorsports">Motorsports</a><a href="equestrian-sports">Equestrian Sports</a><a href="gymnastics-acrobatics">Gymnastics &amp; Acrobatics</a><a href="cycling-sports">Cycling Sports</a><a href="strength-sports">Strength Sports</a><a href="mind-sports">Mind Sports</a><a href="extreme-adventure-sports">Extreme &amp; Adventure Sports</a></nav>
     </div>
-    <p class="foot-note">Names are random combinations of everyday words. Sport and league names are used only to describe the sports, and TRYOUT Sports is not affiliated with any league.</p>
+    <p class="foot-note">Names are random combinations of everyday words. <a href="how-team-names-are-made">How these names are made</a>. Sport and league names are used only to describe the sports, and TRYOUT Sports is not affiliated with any league.</p>
   </div>
 </footer>
 <script src="names.js" defer></script>
